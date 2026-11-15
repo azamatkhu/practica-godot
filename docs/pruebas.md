@@ -18,3 +18,10 @@
 	+ A mi mejor me va a servir utilizar vectores (vector2) para movimientos de jugadores o enemigos
 	+ porque es mas flexible y facil de implementar y orientar. Encima, los nodos como CharacterBody2D
 	+ y etc dependen mucho por vectores
+
+- Ejecucion 15/11/2026:
+	+ Version 0.2 ha sido bastante mejor en ejecutar que version 0.1, porque he mejorado el bucle de juego
+	+ Los enemigos se mueran bastante bien, dando el feedback convirtiendose en color blanco por 0.1 segundo si reciben el daño
+	+ No veo ningun lags y bugs excepto que la sombra de enemigos se desaparece y no pueden evitar los obstaculos
+	+ pero eso se puede mejorar aplicando pathfinding, que voy a hacer en 0.3
+	

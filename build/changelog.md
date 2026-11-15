@@ -1,0 +1,8 @@
+++ Version 0.2: (2026-11-15)
+	- Contiene ahora habitaciones (room.tscn) con enemigos
+	- Puertas que mandan jugador a las habitaciones
+	- Enemigos ahora pueden dar daño cada segundo al jugador
+	- Se puede recargar la arma al pulsar R
+	- El collisionshape de projectile.tscn se ha incrementado un poco
+	- Al recibir daño los enemigos o el jugador se convierte blanco por 0.1 segundo para dar un feedback
+	
