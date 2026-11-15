@@ -6,6 +6,8 @@ class_name Enemy
 var speed: float = 50
 var health: int = 5
 
+var player = null
+
 var attack_time: float = 1
 var can_attack: bool = true
 
@@ -22,17 +24,19 @@ func _physics_process(delta: float) -> void:
 		velocity = direction * speed
 		move_and_slide()
 
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
+		player = body
 		atacar(body)
 
 func recibirDano(amount: int) -> void:
 	var tween = get_tree().create_tween()
 	
-	tween.tween_property($Sprite2D, "modulate", ColorPicker, 1.0).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property($Sprite2D, "modulate", Color(10, 10, 10, 1), 0.1).set_trans(Tween.TRANS_QUAD)
 	await tween.finished
 	
+	$Sprite2D.modulate = Color.WHITE
+	health -= 1
 
 func atacar(target: Node2D):
 	if !can_attack:
@@ -44,3 +48,10 @@ func atacar(target: Node2D):
 	
 func _on_attack_timer_timeout() -> void:
 	can_attack = true
+	
+	if player != null:
+		atacar(player)
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player = null

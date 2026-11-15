@@ -8,15 +8,19 @@ atlas = ExtResource("2_qxf0c")
 region = Rect2(0, 64, 16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qxf0c"]
-radius = 4.0
+radius = 8.0
 
 [node name="Projectile" type="Node2D" unique_id=1296422498]
+z_index = 50
+y_sort_enabled = true
 script = ExtResource("1_a85iw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1896591188]
 texture = SubResource("AtlasTexture_qxf0c")
+offset = Vector2(0, -8)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1469435893]
+position = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1366005022]
 shape = SubResource("CircleShape2D_qxf0c")

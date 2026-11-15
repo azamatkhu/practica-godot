@@ -37,6 +37,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func tomarDaño(amount: int) -> void:
+	var tween = get_tree().create_tween()
+	
+	tween.tween_property($Sprite2D, "modulate", Color(10, 10, 10, 1), 0.1).set_trans(Tween.TRANS_QUAD)
+	await tween.finished
+	
+	sprite2d.modulate = Color.WHITE
+	
 	current_health -= amount
 	SignalManager.emit_signal("health_changed", max_health, current_health)
 	

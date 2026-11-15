@@ -12,6 +12,8 @@ var can_shoot: bool = true
 var current_ammo: int
 var max_ammo: int = 8
 
+var reloading: bool = false
+
 func _ready() -> void:
 	label.hide()
 	current_ammo = max_ammo
@@ -24,6 +26,9 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_pressed("shoot") and can_shoot:
 		shoot()
+	
+	if Input.is_action_pressed("reload") and !reloading and current_ammo < max_ammo:
+		reload()
 
 func aim() -> void:
 	var mouse_pos = get_global_mouse_position()
@@ -39,7 +44,6 @@ func shoot() -> void:
 		return
 	
 	if current_ammo <= 0:
-		reload()
 		return
 	
 	can_shoot = false
@@ -55,11 +59,19 @@ func shoot() -> void:
 	can_shoot = true
 	
 	SignalManager.emit_signal("ammo_changed", max_ammo, current_ammo)
+	
+	if current_ammo <= 0:
+		reload()
+		return
 
 func reload() -> void:
 	label.show()
+	can_shoot = false
+	reloading = true
 	await get_tree().create_timer(2).timeout
 	
 	label.hide()
 	current_ammo = max_ammo
 	SignalManager.emit_signal("ammo_changed", max_ammo, current_ammo)
+	reloading = false
+	can_shoot = true

@@ -3,7 +3,11 @@
 [ext_resource type="Script" uid="uid://cjh5f5toe8ygq" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c8q06psyxfk0s" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://beygiftiqp6t1" path="res://canvas_layer.gd" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://cvda7f8qxa4o3" path="res://room.tscn" id="2_7mycd"]
+[ext_resource type="PackedScene" uid="uid://2n6kbteyc50r" path="res://room_4.tscn" id="2_4c57u"]
+[ext_resource type="PackedScene" uid="uid://c3bp8utpbsbb1" path="res://room_2.tscn" id="2_5vw27"]
+[ext_resource type="PackedScene" uid="uid://cka4eg485o76p" path="res://room_0.tscn" id="2_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bevnrfr2pb0or" path="res://room_1.tscn" id="2_272bh"]
+[ext_resource type="PackedScene" uid="uid://nb3sgj3k534e" path="res://room_3.tscn" id="2_kek77"]
 [ext_resource type="Script" uid="uid://doedufagdfwxv" path="res://health_bar.gd" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://bhsosb37fctkd" path="res://ammo_bar.gd" id="5_7mycd"]
 
@@ -11,13 +15,26 @@
 script = ExtResource("1_1bvp3")
 player = NodePath("Player")
 
-[node name="Room" parent="." unique_id=651459988 instance=ExtResource("2_7mycd")]
+[node name="Room_4" parent="." unique_id=651459988 instance=ExtResource("2_4c57u")]
+position = Vector2(1024, -768)
+
+[node name="Room_3" parent="." unique_id=1899361860 instance=ExtResource("2_kek77")]
+position = Vector2(0, -768)
+
+[node name="Room_2" parent="." unique_id=1364568609 instance=ExtResource("2_5vw27")]
+position = Vector2(-1024, -768)
+
+[node name="Room_1" parent="." unique_id=1999030659 instance=ExtResource("2_272bh")]
+position = Vector2(-1024, 0)
+
+[node name="Room_0" parent="." unique_id=165625408 instance=ExtResource("2_7mycd")]
 
 [node name="Player" parent="." unique_id=1344864234 instance=ExtResource("1_ig7tw")]
 position = Vector2(330, 180)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2050569238]
 position = Vector2(-9, 1)
+zoom = Vector2(0.5, 0.5)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1491604347 node_paths=PackedStringArray("health_bar", "ammo_bar")]
 script = ExtResource("2_0xm2m")
