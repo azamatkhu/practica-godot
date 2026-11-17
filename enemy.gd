@@ -3,8 +3,8 @@ class_name Enemy
 
 @onready var attack_timer = $AttackTimer
 
-var speed: float = 50
-var health: int = 5
+@export var speed: float = 50
+@export var health: int = 5
 
 var player = null
 
